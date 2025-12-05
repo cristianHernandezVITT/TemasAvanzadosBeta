@@ -1,0 +1,1950 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@300;400;600;700&family=Lato:wght@300;400;700&family=Montserrat:wght@300;400;600;700&family=Raleway:wght@300;400;600;700&family=Ubuntu:wght@300;400;500;700&family=Playfair+Display:wght@400;700&family=Merriweather:wght@300;400;700&family=Source+Sans+Pro:wght@300;400;600;700&family=PT+Sans:wght@400;700&family=Oswald:wght@300;400;600;700&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Tema Sistema: Colores EXACTOS como el login (slate tones) */
+  --background: oklch(1 0 0); /* Blanco puro - igual que el login */
+  --foreground: oklch(0.2 0.005 250); /* slate-800 - texto oscuro */
+  --card: oklch(1 0 0); /* Blanco puro */
+  --card-foreground: oklch(0.2 0.005 250); /* slate-800 */
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.2 0.005 250);
+  --primary: oklch(0.35 0.01 250); /* slate-700 - igual que botón login */
+  --primary-foreground: oklch(1 0 0); /* Blanco */
+  --secondary: oklch(0.96 0 0); /* slate-50 - igual que inputs */
+  --secondary-foreground: oklch(0.2 0.005 250);
+  --muted: oklch(0.96 0 0); /* slate-50 */
+  --muted-foreground: oklch(0.45 0.005 250); /* slate-600 - texto secundario */
+  --accent: oklch(0.96 0 0);
+  --accent-foreground: oklch(0.2 0.005 250);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.9 0.005 250); /* slate-200 - igual que bordes inputs */
+  --input: oklch(0.96 0 0); /* slate-50 - igual que inputs login */
+  --ring: oklch(0.35 0.01 250); /* slate-700 */
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  /* Sidebar oscuro EXACTO como el login (slate-800/900) */
+  --sidebar: oklch(0.28 0.01 250); /* slate-800 - igual que panel derecho login */
+  --sidebar-foreground: oklch(1 0 0); /* Blanco puro - texto sidebar */
+  --sidebar-primary: oklch(0.35 0.01 250); /* slate-700 */
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.40 0.01 250); /* Hover más claro - similar a la imagen */
+  --sidebar-accent-foreground: oklch(1 0 0);
+  --sidebar-border: oklch(0.25 0.01 250); /* slate-900 - más oscuro */
+  --sidebar-ring: oklch(0.35 0.01 250);
+}
+
+/* Tema Claro: Colores PROFESIONALES, vibrantes y elegantes */
+.light {
+  --background: oklch(0.98 0.01 0); /* Blanco suave con toque cálido */
+  --foreground: oklch(0.15 0.02 0); /* Negro suave */
+  --card: oklch(0.99 0.005 0); /* Gris muy claro para cards (no blanco puro) */
+  --card-foreground: oklch(0.15 0.02 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.15 0.02 0);
+  --primary: oklch(0.5 0.15 250); /* Azul vibrante y profesional */
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.95 0.01 0); /* Gris muy claro */
+  --secondary-foreground: oklch(0.15 0.02 0);
+  --muted: oklch(0.96 0.01 0); /* Gris claro suave */
+  --muted-foreground: oklch(0.5 0.02 0); /* Gris medio */
+  --accent: oklch(0.94 0.015 250); /* Azul muy claro para hover */
+  --accent-foreground: oklch(0.15 0.02 0);
+  --destructive: oklch(0.6 0.25 27); /* Rojo vibrante */
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.88 0.01 0); /* Borde más visible */
+  --input: oklch(0.99 0 0); /* Blanco para inputs */
+  --ring: oklch(0.5 0.15 250); /* Azul vibrante */
+  --chart-1: oklch(0.5 0.15 250); /* Azul vibrante */
+  --chart-2: oklch(0.55 0.18 200); /* Azul verdoso */
+  --chart-3: oklch(0.6 0.15 75); /* Verde */
+  --chart-4: oklch(0.65 0.18 300); /* Púrpura */
+  --chart-5: oklch(0.55 0.15 30); /* Naranja */
+  /* Sidebar profesional: Gris claro elegante con bordes sutiles */
+  --sidebar: oklch(0.97 0.01 0); /* Gris muy claro */
+  --sidebar-foreground: oklch(0.15 0.02 0); /* Texto oscuro */
+  --sidebar-primary: oklch(0.5 0.15 250); /* Azul vibrante */
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.92 0.015 250); /* Hover azul muy claro */
+  --sidebar-accent-foreground: oklch(0.15 0.02 0);
+  --sidebar-border: oklch(0.88 0.01 0); /* Borde visible */
+  --sidebar-ring: oklch(0.5 0.15 250);
+}
+
+/* Tema Oscuro: Fondo negro puro, texto blanco puro - 100% oscuro */
+.dark {
+  --background: oklch(0 0 0); /* Negro puro */
+  --foreground: oklch(1 0 0); /* Blanco puro */
+  --card: oklch(0 0 0); /* Negro puro */
+  --card-foreground: oklch(1 0 0); /* Blanco puro */
+  --popover: oklch(0 0 0);
+  --popover-foreground: oklch(1 0 0);
+  --primary: oklch(1 0 0); /* Blanco para contraste */
+  --primary-foreground: oklch(0 0 0);
+  --secondary: oklch(0.1 0 0); /* Casi negro */
+  --secondary-foreground: oklch(1 0 0);
+  --muted: oklch(0.05 0 0);
+  --muted-foreground: oklch(1 0 0); /* Blanco */
+  --accent: oklch(0.2 0 0);
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.7 0.25 27); /* Rojo brillante */
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.3 0 0); /* Borde blanco/gris claro para modo oscuro */
+  --input: oklch(0.05 0 0); /* Input casi negro */
+  --ring: oklch(1 0 0);
+  --chart-1: oklch(0.7 0.2 245);
+  --chart-2: oklch(0.75 0.2 220);
+  --chart-3: oklch(0.8 0.15 75);
+  --chart-4: oklch(0.7 0.18 260);
+  --chart-5: oklch(0.65 0.15 200);
+  --sidebar: oklch(0 0 0); /* Sidebar negro puro */
+  --sidebar-foreground: oklch(1 0 0); /* Texto blanco */
+  --sidebar-primary: oklch(1 0 0);
+  --sidebar-primary-foreground: oklch(0 0 0);
+  --sidebar-accent: oklch(0.1 0 0);
+  --sidebar-accent-foreground: oklch(1 0 0);
+  --sidebar-border: oklch(0.15 0 0);
+  --sidebar-ring: oklch(1 0 0);
+}
+
+/* Tema Escala de Grises: Accesible para daltónicos - 100% del sistema */
+.grayscale {
+  --background: oklch(0.95 0 0); /* Gris muy claro - fondo principal */
+  --foreground: oklch(0.15 0 0); /* Casi negro - texto principal */
+  --card: oklch(0.98 0 0); /* Gris casi blanco - cards */
+  --card-foreground: oklch(0.15 0 0); /* Texto oscuro */
+  --popover: oklch(0.98 0 0);
+  --popover-foreground: oklch(0.15 0 0);
+  --primary: oklch(0.3 0 0); /* Gris oscuro - botones principales */
+  --primary-foreground: oklch(0.98 0 0); /* Texto claro */
+  --secondary: oklch(0.85 0 0); /* Gris medio claro */
+  --secondary-foreground: oklch(0.2 0 0); /* Texto oscuro */
+  --muted: oklch(0.9 0 0); /* Gris claro */
+  --muted-foreground: oklch(0.4 0 0); /* Gris medio - texto secundario */
+  --accent: oklch(0.8 0 0); /* Gris medio para hover */
+  --accent-foreground: oklch(0.15 0 0);
+  --destructive: oklch(0.25 0 0); /* Gris muy oscuro - para acciones destructivas */
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.75 0 0); /* Gris medio - bordes visibles */
+  --input: oklch(0.98 0 0); /* Inputs casi blancos */
+  --ring: oklch(0.3 0 0); /* Anillo de foco gris oscuro */
+  /* Colores de gráficos en escala de grises con diferentes tonos muy distinguibles */
+  --chart-1: oklch(0.2 0 0); /* Gris muy oscuro */
+  --chart-2: oklch(0.4 0 0); /* Gris oscuro */
+  --chart-3: oklch(0.6 0 0); /* Gris medio */
+  --chart-4: oklch(0.7 0 0); /* Gris medio claro */
+  --chart-5: oklch(0.5 0 0); /* Gris medio oscuro */
+  /* Sidebar en escala de grises */
+  --sidebar: oklch(0.88 0 0); /* Gris claro para sidebar */
+  --sidebar-foreground: oklch(0.2 0 0); /* Texto oscuro */
+  --sidebar-primary: oklch(0.3 0 0); /* Gris oscuro */
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.75 0 0); /* Gris medio para hover */
+  --sidebar-accent-foreground: oklch(0.15 0 0);
+  --sidebar-border: oklch(0.7 0 0); /* Borde gris medio */
+  --sidebar-ring: oklch(0.3 0 0);
+}
+
+/* Tema Accesible para Daltónicos: Paleta Okabe-Ito - 100% del sistema */
+.colorblind {
+  --background: #F0F0F0; /* Gris claro - fondos */
+  --foreground: #333333; /* Gris oscuro - texto primario */
+  --card: #FFFFFF; /* Blanco - cards */
+  --card-foreground: #333333; /* Texto oscuro */
+  --popover: #FFFFFF;
+  --popover-foreground: #333333;
+  --primary: #0072B2; /* Azul fuerte - botones primarios, elementos importantes */
+  --primary-foreground: #FFFFFF; /* Blanco */
+  --secondary: #009E73; /* Verde azulado - botones secundarios, estados OK */
+  --secondary-foreground: #FFFFFF;
+  --muted: #F0F0F0; /* Gris claro */
+  --muted-foreground: #777777; /* Gris medio - placeholders (ajustado para legibilidad) */
+  --accent: #56B4E9; /* Azul claro - hover, estados informativos */
+  --accent-foreground: #333333;
+  --destructive: #D55E00; /* Naranja - alertas, advertencias, errores */
+  --destructive-foreground: #FFFFFF;
+  --border: #CCCCCC; /* Gris - bordes inputs */
+  --input: #FFFFFF; /* Inputs blancos */
+  --ring: #56B4E9; /* Azul claro - anillo de foco */
+  /* Colores de gráficos Okabe-Ito - distinguibles para todos los tipos de daltonismo */
+  --chart-1: #0072B2; /* Azul fuerte */
+  --chart-2: #D55E00; /* Naranja */
+  --chart-3: #009E73; /* Verde azulado */
+  --chart-4: #CC79A7; /* Magenta */
+  --chart-5: #F0E442; /* Amarillo brillante */
+  /* Sidebar accesible para daltónicos */
+  --sidebar: #F0F0F0; /* Gris claro */
+  --sidebar-foreground: #333333; /* Texto oscuro */
+  --sidebar-primary: #0072B2; /* Azul fuerte */
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #56B4E9; /* Azul claro para hover */
+  --sidebar-accent-foreground: #333333;
+  --sidebar-border: #CCCCCC; /* Borde gris */
+  --sidebar-ring: #56B4E9;
+}
+
+/* Tema Daltonismo General: Paleta accesible general - 100% del sistema */
+.daltonismo-general {
+  --background: #FAFAFA; /* Blanco suave - fondo */
+  --foreground: #1A1A1A; /* Casi negro - texto primario */
+  --card: #FFFFFF; /* Blanco - cards */
+  --card-foreground: #1A1A1A; /* Texto oscuro */
+  --popover: #FFFFFF;
+  --popover-foreground: #1A1A1A;
+  --primary: #005B96; /* Azul profundo - primario */
+  --primary-foreground: #FFFFFF; /* Blanco */
+  --secondary: #00A6D6; /* Cian accesible - información */
+  --secondary-foreground: #FFFFFF;
+  --muted: #F5F5F5; /* Gris muy claro */
+  --muted-foreground: #666666; /* Gris medio - neutro */
+  --accent: #00A6D6; /* Cian accesible - hover, estados informativos */
+  --accent-foreground: #FFFFFF;
+  --destructive: #B22222; /* Rojo oscuro - errores */
+  --destructive-foreground: #FFFFFF;
+  --border: #666666; /* Gris medio - bordes */
+  --input: #FFFFFF; /* Inputs blancos */
+  --ring: #005B96; /* Azul profundo - anillo de foco */
+  /* Colores de gráficos - paleta accesible */
+  --chart-1: #005B96; /* Azul profundo */
+  --chart-2: #00A6D6; /* Cian accesible */
+  --chart-3: #6B8E23; /* Verde oliva */
+  --chart-4: #F39C12; /* Naranja cálido */
+  --chart-5: #7D3C98; /* Morado frío */
+  /* Sidebar daltonismo general */
+  --sidebar: #FAFAFA; /* Blanco suave */
+  --sidebar-foreground: #1A1A1A; /* Texto oscuro */
+  --sidebar-primary: #005B96; /* Azul profundo */
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #00A6D6; /* Cian accesible para hover */
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: #666666; /* Gris medio */
+  --sidebar-ring: #005B96;
+}
+
+/* Estilos específicos para tema Daltonismo General - aplicar colores a todos los elementos */
+.daltonismo-general body {
+  background-color: #FAFAFA !important; /* Blanco suave */
+}
+
+.daltonismo-general aside.bg-gradient-to-b {
+  background: #FAFAFA !important; /* Blanco suave */
+}
+
+.daltonismo-general aside button:hover,
+.daltonismo-general aside a button:hover {
+  background-color: #00A6D6 !important; /* Cian accesible */
+  color: #FFFFFF !important;
+}
+
+.daltonismo-general aside button.bg-sidebar-accent,
+.daltonismo-general aside a button.bg-sidebar-accent {
+  background-color: #005B96 !important; /* Azul profundo */
+  color: #FFFFFF !important;
+}
+
+/* Botones de exportar en tema Daltonismo General */
+.daltonismo-general .export-excel-btn,
+.daltonismo-general button:has([class*="FileSpreadsheet"]) {
+  border-color: #6B8E23 !important; /* Verde oliva - éxito */
+  color: #6B8E23 !important;
+  background-color: #FFFFFF !important;
+}
+
+.daltonismo-general .export-excel-btn:hover,
+.daltonismo-general button:has([class*="FileSpreadsheet"]):hover {
+  background-color: #F0F4E6 !important; /* Verde oliva muy claro */
+  border-color: #556B1A !important; /* Verde oliva más oscuro */
+  color: #556B1A !important;
+}
+
+.daltonismo-general .export-pdf-btn,
+.daltonismo-general button:has([class*="FileText"]) {
+  border-color: #B22222 !important; /* Rojo oscuro - error */
+  color: #B22222 !important;
+  background-color: #FFFFFF !important;
+}
+
+.daltonismo-general .export-pdf-btn:hover,
+.daltonismo-general button:has([class*="FileText"]):hover {
+  background-color: #F5E6E6 !important; /* Rojo muy claro */
+  border-color: #8B1A1A !important; /* Rojo más oscuro */
+  color: #8B1A1A !important;
+}
+
+/* Cards en tema Daltonismo General - COMPLETO */
+.daltonismo-general .card,
+.daltonismo-general [class*="card"],
+.daltonismo-general [data-card],
+.daltonismo-general [data-slot="card"] {
+  background-color: #FFFFFF !important;
+  border-color: #666666 !important; /* Gris medio */
+  color: #1A1A1A !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Títulos de cards */
+.daltonismo-general [data-slot="card"] h3,
+.daltonismo-general [data-slot="card"] h4,
+.daltonismo-general [data-slot="card"] [class*="card-title"],
+.daltonismo-general .card h3,
+.daltonismo-general .card h4,
+.daltonismo-general .card [class*="card-title"] {
+  color: #1A1A1A !important;
+  font-weight: 600 !important;
+}
+
+/* Números grandes en cards */
+.daltonismo-general [data-slot="card"] [class*="text-3xl"],
+.daltonismo-general [data-slot="card"] [class*="text-4xl"],
+.daltonismo-general [data-slot="card"] [class*="text-5xl"],
+.daltonismo-general [data-slot="card"] [class*="text-6xl"],
+.daltonismo-general .card [class*="text-3xl"],
+.daltonismo-general .card [class*="text-4xl"],
+.daltonismo-general .card [class*="text-5xl"],
+.daltonismo-general .card [class*="text-6xl"] {
+  color: #005B96 !important; /* Azul profundo para números grandes */
+  font-weight: 700 !important;
+}
+
+/* Texto primario en cards */
+.daltonismo-general [data-slot="card"] .text-primary,
+.daltonismo-general .card .text-primary,
+.daltonismo-general [data-slot="card"] [class*="text-primary"],
+.daltonismo-general .card [class*="text-primary"] {
+  color: #005B96 !important; /* Azul profundo */
+  font-weight: 600 !important;
+}
+
+/* Texto secundario/muted en cards */
+.daltonismo-general [data-slot="card"] .text-muted-foreground,
+.daltonismo-general .card .text-muted-foreground,
+.daltonismo-general [data-slot="card"] [class*="text-muted"],
+.daltonismo-general .card [class*="text-muted"] {
+  color: #666666 !important; /* Gris medio */
+}
+
+/* Texto de éxito en cards */
+.daltonismo-general [data-slot="card"] .text-success,
+.daltonismo-general .card .text-success,
+.daltonismo-general [data-slot="card"] [class*="text-success"],
+.daltonismo-general .card [class*="text-success"] {
+  color: #6B8E23 !important; /* Verde oliva */
+  font-weight: 600 !important;
+}
+
+/* Texto de advertencia en cards */
+.daltonismo-general [data-slot="card"] .text-warning,
+.daltonismo-general .card .text-warning,
+.daltonismo-general [data-slot="card"] [class*="text-warning"],
+.daltonismo-general .card [class*="text-warning"] {
+  color: #F39C12 !important; /* Naranja cálido */
+  font-weight: 600 !important;
+}
+
+/* Texto de error en cards */
+.daltonismo-general [data-slot="card"] .text-destructive,
+.daltonismo-general .card .text-destructive,
+.daltonismo-general [data-slot="card"] [class*="text-destructive"],
+.daltonismo-general .card [class*="text-destructive"],
+.daltonismo-general [data-slot="card"] .text-red,
+.daltonismo-general .card .text-red {
+  color: #B22222 !important; /* Rojo oscuro */
+  font-weight: 600 !important;
+}
+
+/* Iconos en cards */
+.daltonismo-general [data-slot="card"] svg,
+.daltonismo-general .card svg {
+  color: #005B96 !important; /* Azul profundo por defecto */
+}
+
+.daltonismo-general [data-slot="card"] svg[class*="TrendingUp"],
+.daltonismo-general .card svg[class*="TrendingUp"] {
+  color: #6B8E23 !important; /* Verde oliva - tendencia positiva */
+}
+
+.daltonismo-general [data-slot="card"] svg[class*="TrendingDown"],
+.daltonismo-general .card svg[class*="TrendingDown"] {
+  color: #B22222 !important; /* Rojo oscuro - tendencia negativa */
+}
+
+.daltonismo-general [data-slot="card"] svg[class*="Alert"],
+.daltonismo-general .card svg[class*="Alert"] {
+  color: #F39C12 !important; /* Naranja cálido - alerta */
+}
+
+/* Badges en cards */
+.daltonismo-general [data-slot="card"] [class*="badge"],
+.daltonismo-general .card [class*="badge"],
+.daltonismo-general [data-slot="card"] [class*="tag"],
+.daltonismo-general .card [class*="tag"] {
+  background-color: #00A6D6 !important; /* Cian accesible */
+  color: #FFFFFF !important;
+  border-color: #00A6D6 !important;
+}
+
+.daltonismo-general [data-slot="card"] [class*="badge"][class*="success"],
+.daltonismo-general .card [class*="badge"][class*="success"] {
+  background-color: #6B8E23 !important; /* Verde oliva */
+  color: #FFFFFF !important;
+}
+
+.daltonismo-general [data-slot="card"] [class*="badge"][class*="warning"],
+.daltonismo-general .card [class*="badge"][class*="warning"] {
+  background-color: #F39C12 !important; /* Naranja cálido */
+  color: #FFFFFF !important;
+}
+
+.daltonismo-general [data-slot="card"] [class*="badge"][class*="destructive"],
+.daltonismo-general .card [class*="badge"][class*="destructive"] {
+  background-color: #B22222 !important; /* Rojo oscuro */
+  color: #FFFFFF !important;
+}
+
+/* Botones primarios en tema Daltonismo General */
+.daltonismo-general button[class*="bg-primary"],
+.daltonismo-general .bg-primary,
+.daltonismo-general button:not([class*="bg-"]):not([class*="text-"]) {
+  background-color: #005B96 !important; /* Azul profundo */
+  color: #FFFFFF !important;
+  border-color: #005B96 !important;
+}
+
+.daltonismo-general button[class*="bg-primary"]:hover,
+.daltonismo-general .bg-primary:hover {
+  background-color: #004A7A !important; /* Azul más oscuro */
+  border-color: #004A7A !important;
+}
+
+/* Botones secundarios en tema Daltonismo General */
+.daltonismo-general button[class*="bg-secondary"],
+.daltonismo-general .bg-secondary {
+  background-color: #00A6D6 !important; /* Cian accesible */
+  color: #FFFFFF !important;
+  border-color: #00A6D6 !important;
+}
+
+.daltonismo-general button[class*="bg-secondary"]:hover,
+.daltonismo-general .bg-secondary:hover {
+  background-color: #0085B0 !important; /* Cian más oscuro */
+  border-color: #0085B0 !important;
+}
+
+/* Botones destructivos en tema Daltonismo General */
+.daltonismo-general button[class*="bg-destructive"],
+.daltonismo-general .bg-destructive,
+.daltonismo-general button[class*="bg-red"],
+.daltonismo-general [class*="bg-red"] {
+  background-color: #B22222 !important; /* Rojo oscuro */
+  color: #FFFFFF !important;
+  border-color: #B22222 !important;
+}
+
+.daltonismo-general button[class*="bg-destructive"]:hover,
+.daltonismo-general .bg-destructive:hover {
+  background-color: #8B1A1A !important; /* Rojo más oscuro */
+  border-color: #8B1A1A !important;
+}
+
+/* Botones de éxito en tema Daltonismo General */
+.daltonismo-general button[class*="bg-green"],
+.daltonismo-general [class*="bg-green"],
+.daltonismo-general [class*="text-green"] {
+  background-color: #6B8E23 !important; /* Verde oliva */
+  color: #FFFFFF !important;
+}
+
+.daltonismo-general button[class*="bg-green"]:hover {
+  background-color: #556B1A !important; /* Verde oliva más oscuro */
+}
+
+/* Botones de advertencia en tema Daltonismo General */
+.daltonismo-general button[class*="bg-yellow"],
+.daltonismo-general [class*="bg-yellow"],
+.daltonismo-general [class*="text-yellow"],
+.daltonismo-general [class*="text-warning"] {
+  background-color: #F39C12 !important; /* Naranja cálido */
+  color: #FFFFFF !important;
+}
+
+/* Enlaces en tema Daltonismo General */
+.daltonismo-general a,
+.daltonismo-general [class*="text-primary"],
+.daltonismo-general [class*="text-blue"] {
+  color: #005B96 !important; /* Azul profundo */
+}
+
+.daltonismo-general a:hover {
+  color: #00A6D6 !important; /* Cian accesible */
+}
+
+.daltonismo-general a:visited {
+  color: #7D3C98 !important; /* Morado frío */
+}
+
+/* Inputs y formularios en tema Daltonismo General */
+.daltonismo-general input,
+.daltonismo-general textarea,
+.daltonismo-general select {
+  border-color: #666666 !important; /* Gris medio */
+  background-color: #FFFFFF !important;
+  color: #1A1A1A !important;
+}
+
+.daltonismo-general input::placeholder,
+.daltonismo-general textarea::placeholder {
+  color: #666666 !important; /* Gris medio */
+}
+
+.daltonismo-general input:focus,
+.daltonismo-general textarea:focus,
+.daltonismo-general select:focus {
+  border-color: #005B96 !important; /* Azul profundo */
+  box-shadow: 0 0 0 3px rgba(0, 91, 150, 0.2) !important;
+  outline-color: #005B96 !important;
+}
+
+/* Gráficos Recharts en tema Daltonismo General - COMPLETO */
+.daltonismo-general .recharts-wrapper,
+.daltonismo-general .recharts-surface {
+  background-color: #FFFFFF !important;
+}
+
+.daltonismo-general .recharts-cartesian-grid-horizontal line,
+.daltonismo-general .recharts-cartesian-grid-vertical line {
+  stroke: #666666 !important; /* Gris medio */
+  stroke-opacity: 0.3 !important;
+}
+
+.daltonismo-general .recharts-x-axis .recharts-cartesian-axis-line,
+.daltonismo-general .recharts-y-axis .recharts-cartesian-axis-line {
+  stroke: #666666 !important; /* Gris medio */
+}
+
+.daltonismo-general .recharts-text {
+  fill: #1A1A1A !important; /* Texto oscuro */
+  font-size: 12px !important;
+}
+
+/* Barras en gráficos */
+.daltonismo-general .recharts-bar-rectangle,
+.daltonismo-general .recharts-bar {
+  fill: #005B96 !important; /* Azul profundo por defecto */
+}
+
+.daltonismo-general .recharts-bar-rectangle:nth-of-type(1),
+.daltonismo-general .recharts-bar:nth-of-type(1) {
+  fill: #005B96 !important; /* Azul profundo */
+}
+
+.daltonismo-general .recharts-bar-rectangle:nth-of-type(2),
+.daltonismo-general .recharts-bar:nth-of-type(2) {
+  fill: #00A6D6 !important; /* Cian accesible */
+}
+
+.daltonismo-general .recharts-bar-rectangle:nth-of-type(3),
+.daltonismo-general .recharts-bar:nth-of-type(3) {
+  fill: #6B8E23 !important; /* Verde oliva */
+}
+
+.daltonismo-general .recharts-bar-rectangle:nth-of-type(4),
+.daltonismo-general .recharts-bar:nth-of-type(4) {
+  fill: #F39C12 !important; /* Naranja cálido */
+}
+
+.daltonismo-general .recharts-bar-rectangle:nth-of-type(5),
+.daltonismo-general .recharts-bar:nth-of-type(5) {
+  fill: #7D3C98 !important; /* Morado frío */
+}
+
+/* Líneas en gráficos */
+.daltonismo-general .recharts-line,
+.daltonismo-general .recharts-line-curve,
+.daltonismo-general .recharts-line-dot {
+  stroke: #005B96 !important; /* Azul profundo por defecto */
+}
+
+.daltonismo-general .recharts-line:nth-of-type(1),
+.daltonismo-general .recharts-line-curve:nth-of-type(1) {
+  stroke: #005B96 !important; /* Azul profundo */
+}
+
+.daltonismo-general .recharts-line:nth-of-type(2),
+.daltonismo-general .recharts-line-curve:nth-of-type(2) {
+  stroke: #00A6D6 !important; /* Cian accesible */
+}
+
+.daltonismo-general .recharts-line:nth-of-type(3),
+.daltonismo-general .recharts-line-curve:nth-of-type(3) {
+  stroke: #6B8E23 !important; /* Verde oliva */
+}
+
+.daltonismo-general .recharts-line:nth-of-type(4),
+.daltonismo-general .recharts-line-curve:nth-of-type(4) {
+  stroke: #F39C12 !important; /* Naranja cálido */
+}
+
+.daltonismo-general .recharts-line:nth-of-type(5),
+.daltonismo-general .recharts-line-curve:nth-of-type(5) {
+  stroke: #7D3C98 !important; /* Morado frío */
+}
+
+/* Áreas en gráficos */
+.daltonismo-general .recharts-area {
+  fill: #005B96 !important; /* Azul profundo por defecto */
+  fill-opacity: 0.6 !important;
+}
+
+.daltonismo-general .recharts-area:nth-of-type(1) {
+  fill: #005B96 !important;
+  fill-opacity: 0.6 !important;
+}
+
+.daltonismo-general .recharts-area:nth-of-type(2) {
+  fill: #00A6D6 !important;
+  fill-opacity: 0.6 !important;
+}
+
+.daltonismo-general .recharts-area:nth-of-type(3) {
+  fill: #6B8E23 !important;
+  fill-opacity: 0.6 !important;
+}
+
+/* Pie charts */
+.daltonismo-general .recharts-pie,
+.daltonismo-general .recharts-pie-sector {
+  stroke: #FFFFFF !important;
+  stroke-width: 2 !important;
+}
+
+.daltonismo-general .recharts-pie-sector:nth-of-type(1) {
+  fill: #005B96 !important; /* Azul profundo */
+}
+
+.daltonismo-general .recharts-pie-sector:nth-of-type(2) {
+  fill: #00A6D6 !important; /* Cian accesible */
+}
+
+.daltonismo-general .recharts-pie-sector:nth-of-type(3) {
+  fill: #6B8E23 !important; /* Verde oliva */
+}
+
+.daltonismo-general .recharts-pie-sector:nth-of-type(4) {
+  fill: #F39C12 !important; /* Naranja cálido */
+}
+
+.daltonismo-general .recharts-pie-sector:nth-of-type(5) {
+  fill: #7D3C98 !important; /* Morado frío */
+}
+
+/* Tooltips de gráficos */
+.daltonismo-general .recharts-tooltip-wrapper,
+.daltonismo-general .recharts-default-tooltip {
+  background-color: #FFFFFF !important;
+  border: 1px solid #666666 !important;
+  color: #1A1A1A !important;
+}
+
+.daltonismo-general .recharts-tooltip-label {
+  color: #005B96 !important; /* Azul profundo */
+  font-weight: bold !important;
+}
+
+/* Leyendas de gráficos */
+.daltonismo-general .recharts-legend-wrapper {
+  color: #1A1A1A !important;
+}
+
+.daltonismo-general .recharts-legend-item-text {
+  fill: #1A1A1A !important;
+  color: #1A1A1A !important;
+}
+
+/* Chart.js en tema Daltonismo General - COMPLETO */
+.daltonismo-general canvas {
+  background-color: #FFFFFF !important;
+}
+
+.daltonismo-general [class*="chartjs"],
+.daltonismo-general [class*="chart-container"] {
+  background-color: #FFFFFF !important;
+}
+
+/* Aplicar colores a datasets de Chart.js usando atributos de datos */
+.daltonismo-general canvas[data-chart-color="1"] {
+  border-color: #005B96 !important; /* Azul profundo */
+}
+
+.daltonismo-general canvas[data-chart-color="2"] {
+  border-color: #00A6D6 !important; /* Cian accesible */
+}
+
+.daltonismo-general canvas[data-chart-color="3"] {
+  border-color: #6B8E23 !important; /* Verde oliva */
+}
+
+.daltonismo-general canvas[data-chart-color="4"] {
+  border-color: #F39C12 !important; /* Naranja cálido */
+}
+
+.daltonismo-general canvas[data-chart-color="5"] {
+  border-color: #7D3C98 !important; /* Morado frío */
+}
+
+/* Badges y etiquetas en tema Daltonismo General */
+.daltonismo-general [class*="badge"],
+.daltonismo-general [class*="tag"],
+.daltonismo-general [data-slot="badge"] {
+  background-color: #00A6D6 !important; /* Cian accesible */
+  color: #FFFFFF !important;
+  border-color: #00A6D6 !important;
+}
+
+/* Tablas en tema Daltonismo General - COMPLETO */
+.daltonismo-general table,
+.daltonismo-general [role="table"],
+.daltonismo-general [data-slot="table"] {
+  border-color: #666666 !important; /* Gris medio */
+  background-color: #FFFFFF !important;
+}
+
+.daltonismo-general th,
+.daltonismo-general .table th,
+.daltonismo-general [role="columnheader"],
+.daltonismo-general [data-slot="table-head"] {
+  background-color: #005B96 !important; /* Azul profundo */
+  color: #FFFFFF !important;
+  border-color: #666666 !important;
+  font-weight: 600 !important;
+}
+
+.daltonismo-general td,
+.daltonismo-general .table td,
+.daltonismo-general [role="cell"],
+.daltonismo-general [data-slot="table-cell"] {
+  background-color: #FFFFFF !important;
+  color: #1A1A1A !important;
+  border-color: #666666 !important;
+}
+
+.daltonismo-general tbody tr:nth-child(even),
+.daltonismo-general .table tbody tr:nth-child(even) {
+  background-color: #FAFAFA !important; /* Blanco suave - alternar filas */
+}
+
+.daltonismo-general tr:hover,
+.daltonismo-general tbody tr:hover,
+.daltonismo-general .table tbody tr:hover {
+  background-color: #E6F2F8 !important; /* Cian muy claro - hover */
+}
+
+.daltonismo-general thead,
+.daltonismo-general .table thead,
+.daltonismo-general [data-slot="table-header"] {
+  background-color: #005B96 !important; /* Azul profundo */
+  border-bottom: 2px solid #666666 !important;
+}
+
+/* Texto y números en tablas */
+.daltonismo-general td[class*="text-primary"],
+.daltonismo-general td .text-primary {
+  color: #005B96 !important; /* Azul profundo */
+  font-weight: 600 !important;
+}
+
+.daltonismo-general td[class*="text-success"],
+.daltonismo-general td .text-success {
+  color: #6B8E23 !important; /* Verde oliva */
+  font-weight: 600 !important;
+}
+
+.daltonismo-general td[class*="text-warning"],
+.daltonismo-general td .text-warning {
+  color: #F39C12 !important; /* Naranja cálido */
+  font-weight: 600 !important;
+}
+
+.daltonismo-general td[class*="text-destructive"],
+.daltonismo-general td .text-destructive,
+.daltonismo-general td[class*="text-red"],
+.daltonismo-general td .text-red {
+  color: #B22222 !important; /* Rojo oscuro */
+  font-weight: 600 !important;
+}
+
+.daltonismo-general td[class*="text-muted"],
+.daltonismo-general td .text-muted-foreground {
+  color: #666666 !important; /* Gris medio */
+}
+
+/* Iconos en tablas */
+.daltonismo-general td svg[class*="Edit"],
+.daltonismo-general td button:has(svg[class*="Edit"]) svg {
+  color: #00A6D6 !important; /* Cian accesible - editar */
+}
+
+.daltonismo-general td svg[class*="Trash"],
+.daltonismo-general td svg[class*="X"],
+.daltonismo-general td button:has(svg[class*="Trash"]) svg,
+.daltonismo-general td button:has(svg[class*="X"]) svg {
+  color: #B22222 !important; /* Rojo oscuro - eliminar */
+}
+
+.daltonismo-general td svg[class*="Check"],
+.daltonismo-general td svg[class*="CheckCircle"],
+.daltonismo-general td button:has(svg[class*="Check"]) svg {
+  color: #6B8E23 !important; /* Verde oliva - éxito */
+}
+
+/* Alertas y mensajes en tema Daltonismo General */
+.daltonismo-general [role="alert"],
+.daltonismo-general [class*="alert"] {
+  background-color: #FAFAFA !important; /* Blanco suave */
+  color: #1A1A1A !important;
+  border-color: #666666 !important; /* Gris medio */
+}
+
+.daltonismo-general [class*="destructive"] {
+  background-color: #B22222 !important; /* Rojo oscuro */
+  color: #FFFFFF !important;
+}
+
+.daltonismo-general [class*="success"],
+.daltonismo-general [class*="text-success"] {
+  background-color: #6B8E23 !important; /* Verde oliva */
+  color: #FFFFFF !important;
+}
+
+.daltonismo-general [class*="warning"],
+.daltonismo-general [class*="text-warning"] {
+  background-color: #F39C12 !important; /* Naranja cálido */
+  color: #FFFFFF !important;
+}
+
+.daltonismo-general [class*="info"],
+.daltonismo-general [class*="text-info"] {
+  background-color: #00A6D6 !important; /* Cian accesible */
+  color: #FFFFFF !important;
+}
+
+/* Iconos de acción en tablas */
+.daltonismo-general button[aria-label*="Editar"],
+.daltonismo-general button[aria-label*="editar"],
+.daltonismo-general button[aria-label*="Edit"],
+.daltonismo-general button:has(svg[class*="Edit"]) {
+  color: #00A6D6 !important; /* Cian accesible - editar */
+}
+
+.daltonismo-general button[aria-label*="Eliminar"],
+.daltonismo-general button[aria-label*="eliminar"],
+.daltonismo-general button[aria-label*="Delete"],
+.daltonismo-general button:has(svg[class*="Trash"]),
+.daltonismo-general button:has(svg[class*="X"]) {
+  color: #B22222 !important; /* Rojo oscuro - eliminar */
+}
+
+/* Tooltips y popovers */
+.daltonismo-general [role="tooltip"],
+.daltonismo-general [data-radix-popper-content-wrapper] {
+  background-color: #FFFFFF !important;
+  color: #1A1A1A !important;
+  border-color: #666666 !important; /* Gris medio */
+}
+
+/* Separadores */
+.daltonismo-general hr,
+.daltonismo-general [class*="separator"] {
+  border-color: #666666 !important; /* Gris medio */
+}
+
+@theme inline {
+  --font-sans: "Geist", "Geist Fallback";
+  --font-mono: "Geist Mono", "Geist Mono Fallback";
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  /* Sidebar con gradiente para tema sistema (igual que login: from-slate-800 to-slate-900) */
+  :root aside.bg-gradient-to-b {
+    background: linear-gradient(to bottom, rgb(30, 41, 59), rgb(15, 23, 42)) !important;
+  }
+  
+  /* Para temas claro y oscuro, usar bg-sidebar normal */
+  .light aside.bg-gradient-to-b,
+  .dark aside.bg-gradient-to-b {
+    background: var(--sidebar) !important;
+  }
+  
+  /* Hover del sidebar en tema Sistema: bg-slate-700 y text-white */
+  :root aside button:hover,
+  :root aside a button:hover {
+    background-color: rgb(51, 65, 85) !important; /* slate-700 */
+    color: rgb(255, 255, 255) !important; /* white */
+  }
+  
+  /* Estado activo del sidebar en tema Sistema */
+  :root aside button.bg-sidebar-accent,
+  :root aside a button.bg-sidebar-accent {
+    background-color: rgb(51, 65, 85) !important; /* slate-700 */
+    color: rgb(255, 255, 255) !important; /* white */
+  }
+  
+  /* Botones de exportar Excel en tema Sistema: verde */
+  :root .export-excel-btn,
+  :root button:has([class*="FileSpreadsheet"]),
+  :root button:has(svg[class*="FileSpreadsheet"]) {
+    border-color: rgb(22, 163, 74) !important; /* green-600 */
+    color: rgb(22, 163, 74) !important;
+  }
+  
+  :root .export-excel-btn:hover,
+  :root button:has([class*="FileSpreadsheet"]):hover,
+  :root button:has(svg[class*="FileSpreadsheet"]):hover {
+    background-color: rgb(240, 253, 244) !important; /* green-50 */
+    border-color: rgb(22, 163, 74) !important;
+    color: rgb(22, 163, 74) !important;
+  }
+  
+  :root .export-excel-btn svg,
+  :root .export-excel-btn span,
+  :root button:has([class*="FileSpreadsheet"]) svg,
+  :root button:has([class*="FileSpreadsheet"]) span {
+    color: rgb(22, 163, 74) !important;
+  }
+  
+  /* Botones de exportar PDF en tema Sistema: rojo */
+  :root .export-pdf-btn,
+  :root button:has([class*="FileText"]),
+  :root button:has(svg[class*="FileText"]) {
+    border-color: rgb(220, 38, 38) !important; /* red-600 */
+    color: rgb(220, 38, 38) !important;
+  }
+  
+  :root .export-pdf-btn:hover,
+  :root button:has([class*="FileText"]):hover,
+  :root button:has(svg[class*="FileText"]):hover {
+    background-color: rgb(254, 242, 242) !important; /* red-50 */
+    border-color: rgb(220, 38, 38) !important;
+    color: rgb(220, 38, 38) !important;
+  }
+  
+  :root .export-pdf-btn svg,
+  :root .export-pdf-btn span,
+  :root button:has([class*="FileText"]) svg,
+  :root button:has([class*="FileText"]) span {
+    color: rgb(220, 38, 38) !important;
+  }
+  
+  /* Cards del dashboard en tema Sistema: números y textos con color */
+  :root [data-slot="card"] .text-primary,
+  :root .card .text-primary {
+    color: rgb(59, 130, 246) !important; /* blue-500 */
+  }
+  
+  :root [data-slot="card"] .text-muted-foreground,
+  :root .card .text-muted-foreground {
+    color: rgb(100, 116, 139) !important; /* slate-500 */
+  }
+  
+  :root [data-slot="card"] [class*="text-3xl"],
+  :root [data-slot="card"] [class*="text-4xl"],
+  :root .card [class*="text-3xl"],
+  :root .card [class*="text-4xl"] {
+    color: rgb(59, 130, 246) !important; /* blue-500 para números grandes */
+  }
+  
+  /* Sidebar en tema Claro: usar bg-sidebar (gris claro) en lugar de gradiente */
+  .light aside.bg-gradient-to-b {
+    background: var(--sidebar) !important;
+  }
+  
+  /* Hover del sidebar en tema Claro: gris claro profesional */
+  .light aside button:hover,
+  .light aside a button:hover {
+    background-color: var(--sidebar-accent) !important;
+    color: var(--sidebar-accent-foreground) !important;
+  }
+  
+  /* Estado activo del sidebar en tema Claro */
+  .light aside button.bg-sidebar-accent,
+  .light aside a button.bg-sidebar-accent {
+    background-color: var(--sidebar-accent) !important;
+    color: var(--sidebar-accent-foreground) !important;
+  }
+  
+  /* Cards en tema Claro: sombras más pronunciadas y bordes más visibles */
+  .light .card,
+  .light [data-slot="card"] {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1) !important;
+    border-color: var(--border) !important;
+  }
+  
+  /* Inputs en tema Claro: bordes más visibles */
+  .light input,
+  .light textarea,
+  .light select {
+    border-color: var(--border) !important;
+  }
+  
+  .light input:focus,
+  .light textarea:focus,
+  .light select:focus {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 3px var(--ring) !important;
+  }
+  
+  /* Botones en tema Claro: más vibrantes */
+  .light button[class*="bg-primary"],
+  .light .bg-primary {
+    background-color: var(--primary) !important;
+  }
+  
+  .light button[class*="bg-primary"]:hover,
+  .light .bg-primary:hover {
+    background-color: oklch(0.45 0.15 250) !important; /* Azul más oscuro en hover */
+  }
+  
+  /* Botones outline en tema Claro */
+  .light button[class*="border"]:hover {
+    background-color: var(--accent) !important;
+    border-color: var(--primary) !important;
+  }
+  
+  /* Background general en tema Claro */
+  .light body {
+    background-color: var(--background) !important;
+  }
+  
+  /* Badges en tema Claro: más vibrantes */
+  .light [data-slot="badge"] {
+    border-color: var(--border) !important;
+  }
+  
+  /* Tablas en tema Claro: bordes más visibles */
+  .light table,
+  .light [data-slot="table"] {
+    border-color: var(--border) !important;
+  }
+  
+  .light th,
+  .light [data-slot="table-head"] {
+    background-color: var(--muted) !important;
+    border-color: var(--border) !important;
+  }
+  
+  .light tr:hover,
+  .light [data-slot="table-row"]:hover {
+    background-color: var(--accent) !important;
+  }
+  
+  /* Tablas en modo oscuro: fondo negro, texto blanco, bordes blancos */
+  .dark table,
+  .dark .table,
+  .dark [role="table"],
+  .dark [data-slot="table"] {
+    background-color: oklch(0 0 0) !important;
+    color: oklch(1 0 0) !important;
+  }
+  
+  .dark th,
+  .dark .table th,
+  .dark [role="columnheader"],
+  .dark [data-slot="table-head"] {
+    background-color: oklch(0 0 0) !important;
+    color: oklch(1 0 0) !important;
+    border-color: oklch(1 0 0) !important;
+  }
+  
+  .dark td,
+  .dark .table td,
+  .dark [role="cell"],
+  .dark [data-slot="table-cell"] {
+    background-color: oklch(0 0 0) !important;
+    color: oklch(1 0 0) !important;
+    border-color: oklch(0.3 0 0) !important;
+  }
+  
+  .dark tr,
+  .dark .table tr,
+  .dark [role="row"],
+  .dark [data-slot="table-row"] {
+    border-color: oklch(0.3 0 0) !important;
+  }
+  
+  .dark thead,
+  .dark .table thead,
+  .dark [data-slot="table-header"] {
+    border-bottom: 1px solid oklch(1 0 0) !important;
+  }
+  
+  .dark thead tr,
+  .dark .table thead tr,
+  .dark [data-slot="table-header"] tr {
+    border-bottom: 1px solid oklch(1 0 0) !important;
+  }
+  
+  .dark tbody tr,
+  .dark .table tbody tr,
+  .dark [data-slot="table-body"] tr {
+    border-bottom: 1px solid oklch(0.3 0 0) !important;
+  }
+  
+  .dark tbody tr:hover,
+  .dark .table tbody tr:hover,
+  .dark [data-slot="table-body"] tr:hover {
+    background-color: oklch(0.1 0 0) !important;
+  }
+  
+  /* Cards en modo oscuro: fondo negro */
+  .dark .card,
+  .dark [class*="card"],
+  .dark [data-card] {
+    background-color: oklch(0 0 0) !important;
+    border-color: oklch(0.2 0 0) !important;
+  }
+  
+  /* Gráficas Recharts en modo oscuro */
+  .dark .recharts-wrapper,
+  .dark .recharts-surface {
+    background-color: oklch(0 0 0) !important;
+  }
+  
+  .dark .recharts-cartesian-grid-horizontal line,
+  .dark .recharts-cartesian-grid-vertical line {
+    stroke: oklch(0.2 0 0) !important;
+  }
+  
+  .dark .recharts-x-axis .recharts-cartesian-axis-line,
+  .dark .recharts-y-axis .recharts-cartesian-axis-line {
+    stroke: oklch(0.3 0 0) !important;
+  }
+  
+  .dark .recharts-text {
+    fill: oklch(1 0 0) !important;
+  }
+  
+  /* Chart.js en modo oscuro: fondo oscuro */
+  .dark canvas {
+    background-color: oklch(0 0 0) !important;
+  }
+  
+  .dark [class*="chartjs"] {
+    background-color: oklch(0 0 0) !important;
+  }
+  
+  /* Gráficos Recharts en tema Claro: fondo claro (no blanco puro) */
+  .light .recharts-wrapper,
+  .light .recharts-surface {
+    background-color: var(--card) !important;
+  }
+  
+  .light .recharts-cartesian-grid-horizontal line,
+  .light .recharts-cartesian-grid-vertical line {
+    stroke: var(--border) !important;
+  }
+  
+  .light .recharts-x-axis .recharts-cartesian-axis-line,
+  .light .recharts-y-axis .recharts-cartesian-axis-line {
+    stroke: var(--border) !important;
+  }
+  
+  .light .recharts-text {
+    fill: var(--foreground) !important;
+  }
+  
+  /* Chart.js en tema Claro: fondo claro */
+  .light canvas {
+    background-color: var(--card) !important;
+  }
+  
+  .light [class*="chartjs"] {
+    background-color: var(--card) !important;
+  }
+  
+  /* ============================================
+     TEMA ESCALA DE GRISES - ACCESIBLE PARA DALTONICOS
+     ============================================ */
+  
+  /* Tablas en tema Escala de Grises */
+  .grayscale table,
+  .grayscale .table,
+  .grayscale [role="table"] {
+    background-color: var(--card) !important;
+    color: var(--foreground) !important;
+    border-color: var(--border) !important;
+  }
+  
+  .grayscale th,
+  .grayscale td {
+    background-color: var(--card) !important;
+    color: var(--foreground) !important;
+    border-color: var(--border) !important;
+  }
+  
+  .grayscale tr:hover,
+  .grayscale tbody tr:hover {
+    background-color: var(--accent) !important;
+  }
+  
+  .grayscale thead {
+    background-color: var(--muted) !important;
+  }
+  
+  /* Cards en tema Escala de Grises */
+  .grayscale .card,
+  .grayscale [class*="card"],
+  .grayscale [data-card],
+  .grayscale [data-slot="card"] {
+    background-color: var(--card) !important;
+    border-color: var(--border) !important;
+    color: var(--foreground) !important;
+  }
+  
+  /* Gráficos Recharts en tema Escala de Grises */
+  .grayscale .recharts-wrapper,
+  .grayscale .recharts-surface {
+    background-color: var(--card) !important;
+  }
+  
+  .grayscale .recharts-cartesian-grid-horizontal line,
+  .grayscale .recharts-cartesian-grid-vertical line {
+    stroke: var(--border) !important;
+  }
+  
+  .grayscale .recharts-x-axis .recharts-cartesian-axis-line,
+  .grayscale .recharts-y-axis .recharts-cartesian-axis-line {
+    stroke: var(--border) !important;
+  }
+  
+  .grayscale .recharts-text {
+    fill: var(--foreground) !important;
+  }
+  
+  /* Chart.js en tema Escala de Grises */
+  .grayscale canvas {
+    background-color: var(--card) !important;
+  }
+  
+  .grayscale [class*="chartjs"] {
+    background-color: var(--card) !important;
+  }
+  
+  /* Sidebar en tema Escala de Grises */
+  .grayscale aside.bg-gradient-to-b {
+    background: var(--sidebar) !important;
+  }
+  
+  .grayscale aside button:hover,
+  .grayscale aside a button:hover {
+    background-color: var(--sidebar-accent) !important;
+    color: var(--sidebar-accent-foreground) !important;
+  }
+  
+  .grayscale aside button.bg-sidebar-accent,
+  .grayscale aside a button.bg-sidebar-accent {
+    background-color: var(--sidebar-accent) !important;
+    color: var(--sidebar-accent-foreground) !important;
+  }
+  
+  /* Botones de exportar en tema Escala de Grises - usar diferentes tonos de gris */
+  .grayscale .export-excel-btn,
+  .grayscale button:has([class*="FileSpreadsheet"]) {
+    border-color: oklch(0.4 0 0) !important; /* Gris oscuro */
+    color: oklch(0.3 0 0) !important; /* Gris muy oscuro */
+    background-color: oklch(0.9 0 0) !important; /* Gris claro */
+  }
+  
+  .grayscale .export-excel-btn:hover,
+  .grayscale button:has([class*="FileSpreadsheet"]):hover {
+    background-color: oklch(0.7 0 0) !important; /* Gris medio */
+    border-color: oklch(0.3 0 0) !important;
+    color: oklch(0.15 0 0) !important;
+  }
+  
+  .grayscale .export-pdf-btn,
+  .grayscale button:has([class*="FileText"]) {
+    border-color: oklch(0.25 0 0) !important; /* Gris muy oscuro */
+    color: oklch(0.2 0 0) !important; /* Casi negro */
+    background-color: oklch(0.95 0 0) !important; /* Gris muy claro */
+  }
+  
+  .grayscale .export-pdf-btn:hover,
+  .grayscale button:has([class*="FileText"]):hover {
+    background-color: oklch(0.6 0 0) !important; /* Gris medio oscuro */
+    border-color: oklch(0.2 0 0) !important;
+    color: oklch(0.98 0 0) !important; /* Casi blanco */
+  }
+  
+  /* Cards del dashboard en tema Escala de Grises - usar diferentes tonos */
+  .grayscale [data-slot="card"] .text-primary,
+  .grayscale .card .text-primary {
+    color: oklch(0.25 0 0) !important; /* Gris muy oscuro */
+  }
+  
+  .grayscale [data-slot="card"] .text-muted-foreground,
+  .grayscale .card .text-muted-foreground {
+    color: oklch(0.5 0 0) !important; /* Gris medio */
+  }
+  
+  .grayscale [data-slot="card"] [class*="text-3xl"],
+  .grayscale [data-slot="card"] [class*="text-4xl"],
+  .grayscale .card [class*="text-3xl"],
+  .grayscale .card [class*="text-4xl"] {
+    color: oklch(0.2 0 0) !important; /* Casi negro para números grandes */
+  }
+  
+  /* Inputs y formularios en tema Escala de Grises */
+  .grayscale input,
+  .grayscale textarea,
+  .grayscale select {
+    background-color: var(--input) !important;
+    border-color: var(--border) !important;
+    color: var(--foreground) !important;
+  }
+  
+  .grayscale input:focus,
+  .grayscale textarea:focus,
+  .grayscale select:focus {
+    border-color: var(--ring) !important;
+    outline-color: var(--ring) !important;
+  }
+  
+  /* Botones en tema Escala de Grises */
+  .grayscale button[class*="bg-primary"] {
+    background-color: var(--primary) !important;
+    color: var(--primary-foreground) !important;
+  }
+  
+  .grayscale button[class*="bg-primary"]:hover {
+    background-color: oklch(0.25 0 0) !important; /* Gris más oscuro */
+  }
+  
+  /* Badges en tema Escala de Grises */
+  .grayscale [data-slot="badge"] {
+    background-color: var(--muted) !important;
+    color: var(--foreground) !important;
+    border-color: var(--border) !important;
+  }
+  
+  /* Separadores y líneas en tema Escala de Grises */
+  .grayscale hr,
+  .grayscale [class*="separator"] {
+    border-color: var(--border) !important;
+  }
+  
+  /* Tooltips y popovers en tema Escala de Grises */
+  .grayscale [role="tooltip"],
+  .grayscale [data-radix-popper-content-wrapper] {
+    background-color: var(--popover) !important;
+    color: var(--popover-foreground) !important;
+    border-color: var(--border) !important;
+  }
+  
+  /* Alertas y mensajes en tema Escala de Grises */
+  .grayscale [role="alert"],
+  .grayscale [class*="alert"] {
+    background-color: var(--muted) !important;
+    color: var(--foreground) !important;
+    border-color: var(--border) !important;
+  }
+  
+  .grayscale [class*="destructive"] {
+    background-color: var(--destructive) !important;
+    color: var(--destructive-foreground) !important;
+  }
+  
+  /* ============================================
+     TEMA ACCESIBLE PARA DALTONICOS - 100% DEL SISTEMA
+     ============================================ */
+  
+  /* Tablas en tema Accesible para Daltónicos - Paleta Okabe-Ito */
+  .colorblind table,
+  .colorblind .table,
+  .colorblind [role="table"] {
+    background-color: #FFFFFF !important; /* Blanco */
+    color: #333333 !important; /* Texto oscuro */
+    border-color: #CCCCCC !important; /* Borde gris */
+  }
+  
+  .colorblind th {
+    background-color: #0072B2 !important; /* Azul fuerte - encabezados */
+    color: #FFFFFF !important; /* Blanco */
+    border-color: #005A8F !important;
+  }
+  
+  .colorblind td {
+    background-color: #FFFFFF !important;
+    color: #333333 !important;
+    border-color: #CCCCCC !important;
+  }
+  
+  .colorblind tbody tr:nth-child(even) {
+    background-color: #F7F7F7 !important; /* Gris claro - alternar filas */
+  }
+  
+  .colorblind tr:hover,
+  .colorblind tbody tr:hover {
+    background-color: #E6F2F8 !important; /* Azul muy claro - hover */
+  }
+  
+  .colorblind thead {
+    background-color: #0072B2 !important; /* Azul fuerte */
+  }
+  
+  /* Cards en tema Accesible para Daltónicos */
+  .colorblind .card,
+  .colorblind [class*="card"],
+  .colorblind [data-card],
+  .colorblind [data-slot="card"] {
+    background-color: var(--card) !important;
+    border-color: var(--border) !important;
+    color: var(--foreground) !important;
+  }
+  
+  /* Gráficos Recharts en tema Accesible para Daltónicos */
+  .colorblind .recharts-wrapper,
+  .colorblind .recharts-surface {
+    background-color: var(--card) !important;
+  }
+  
+  .colorblind .recharts-cartesian-grid-horizontal line,
+  .colorblind .recharts-cartesian-grid-vertical line {
+    stroke: var(--border) !important;
+  }
+  
+  .colorblind .recharts-x-axis .recharts-cartesian-axis-line,
+  .colorblind .recharts-y-axis .recharts-cartesian-axis-line {
+    stroke: var(--border) !important;
+  }
+  
+  .colorblind .recharts-text {
+    fill: var(--foreground) !important;
+  }
+  
+  /* Chart.js en tema Accesible para Daltónicos */
+  .colorblind canvas {
+    background-color: var(--card) !important;
+  }
+  
+  .colorblind [class*="chartjs"] {
+    background-color: var(--card) !important;
+  }
+  
+  /* Sidebar en tema Accesible para Daltónicos */
+  .colorblind aside.bg-gradient-to-b {
+    background: var(--sidebar) !important;
+  }
+  
+  .colorblind aside button:hover,
+  .colorblind aside a button:hover {
+    background-color: var(--sidebar-accent) !important;
+    color: var(--sidebar-accent-foreground) !important;
+  }
+  
+  .colorblind aside button.bg-sidebar-accent,
+  .colorblind aside a button.bg-sidebar-accent {
+    background-color: var(--sidebar-accent) !important;
+    color: var(--sidebar-accent-foreground) !important;
+  }
+  
+  /* Botones de exportar en tema Accesible para Daltónicos - Paleta Okabe-Ito */
+  .colorblind .export-excel-btn,
+  .colorblind button:has([class*="FileSpreadsheet"]) {
+    border-color: #009E73 !important; /* Verde azulado - botones secundarios */
+    color: #009E73 !important;
+    background-color: #FFFFFF !important; /* Blanco */
+  }
+  
+  .colorblind .export-excel-btn:hover,
+  .colorblind button:has([class*="FileSpreadsheet"]):hover {
+    background-color: #E6F7F3 !important; /* Verde azulado muy claro */
+    border-color: #007A5C !important; /* Verde azulado más oscuro */
+    color: #007A5C !important;
+  }
+  
+  .colorblind .export-pdf-btn,
+  .colorblind button:has([class*="FileText"]) {
+    border-color: #D55E00 !important; /* Naranja - alertas/advertencias */
+    color: #D55E00 !important;
+    background-color: #FFFFFF !important; /* Blanco */
+  }
+  
+  .colorblind .export-pdf-btn:hover,
+  .colorblind button:has([class*="FileText"]):hover {
+    background-color: #FFF4E6 !important; /* Naranja muy claro */
+    border-color: #B84D00 !important; /* Naranja más oscuro */
+    color: #B84D00 !important;
+  }
+  
+  /* Cards del dashboard en tema Accesible para Daltónicos - Paleta Okabe-Ito */
+  .colorblind [data-slot="card"] .text-primary,
+  .colorblind .card .text-primary {
+    color: #0072B2 !important; /* Azul fuerte */
+  }
+  
+  .colorblind [data-slot="card"] .text-muted-foreground,
+  .colorblind .card .text-muted-foreground {
+    color: #777777 !important; /* Gris medio - placeholders */
+  }
+  
+  .colorblind [data-slot="card"] [class*="text-3xl"],
+  .colorblind [data-slot="card"] [class*="text-4xl"],
+  .colorblind .card [class*="text-3xl"],
+  .colorblind .card [class*="text-4xl"] {
+    color: #0072B2 !important; /* Azul fuerte para números grandes */
+  }
+  
+  /* Inputs y formularios en tema Accesible para Daltónicos - Paleta Okabe-Ito */
+  .colorblind input,
+  .colorblind textarea,
+  .colorblind select {
+    background-color: #FFFFFF !important; /* Blanco */
+    border-color: #CCCCCC !important; /* Gris - bordes */
+    color: #333333 !important; /* Texto oscuro */
+  }
+  
+  .colorblind input::placeholder,
+  .colorblind textarea::placeholder {
+    color: #777777 !important; /* Gris medio - placeholders */
+  }
+  
+  .colorblind input:focus,
+  .colorblind textarea:focus,
+  .colorblind select:focus {
+    border-color: #56B4E9 !important; /* Azul claro - focus */
+    outline-color: #56B4E9 !important;
+  }
+  
+  /* Botones en tema Accesible para Daltónicos - Paleta Okabe-Ito */
+  .colorblind button[class*="bg-primary"] {
+    background-color: #0072B2 !important; /* Azul fuerte */
+    color: #FFFFFF !important; /* Blanco */
+  }
+  
+  .colorblind button[class*="bg-primary"]:hover {
+    background-color: #005A8F !important; /* Azul más oscuro */
+  }
+  
+  .colorblind button[class*="bg-secondary"] {
+    background-color: #009E73 !important; /* Verde azulado */
+    color: #FFFFFF !important;
+  }
+  
+  .colorblind button[class*="bg-secondary"]:hover {
+    background-color: #007A5C !important; /* Verde azulado más oscuro */
+  }
+  
+  /* Badges en tema Accesible para Daltónicos */
+  .colorblind [data-slot="badge"] {
+    background-color: var(--muted) !important;
+    color: var(--foreground) !important;
+    border-color: var(--border) !important;
+  }
+  
+  /* Separadores y líneas en tema Accesible para Daltónicos */
+  .colorblind hr,
+  .colorblind [class*="separator"] {
+    border-color: var(--border) !important;
+  }
+  
+  /* Tooltips y popovers en tema Accesible para Daltónicos */
+  .colorblind [role="tooltip"],
+  .colorblind [data-radix-popper-content-wrapper] {
+    background-color: var(--popover) !important;
+    color: var(--popover-foreground) !important;
+    border-color: var(--border) !important;
+  }
+  
+  /* Alertas y mensajes en tema Accesible para Daltónicos - Paleta Okabe-Ito */
+  .colorblind [role="alert"],
+  .colorblind [class*="alert"] {
+    background-color: #F0F0F0 !important; /* Gris claro */
+    color: #333333 !important; /* Texto oscuro */
+    border-color: #CCCCCC !important;
+  }
+  
+  .colorblind [class*="destructive"] {
+    background-color: #D55E00 !important; /* Naranja - errores */
+    color: #FFFFFF !important; /* Blanco */
+  }
+  
+  /* Iconos de acción en tablas - Paleta Okabe-Ito */
+  .colorblind button[aria-label*="Editar"],
+  .colorblind button[aria-label*="editar"],
+  .colorblind button[aria-label*="Edit"],
+  .colorblind button:has(svg[class*="Edit"]) {
+    color: #56B4E9 !important; /* Azul claro - editar */
+  }
+  
+  .colorblind button[aria-label*="Eliminar"],
+  .colorblind button[aria-label*="eliminar"],
+  .colorblind button[aria-label*="Delete"],
+  .colorblind button:has(svg[class*="Trash"]),
+  .colorblind button:has(svg[class*="X"]) {
+    color: #D55E00 !important; /* Naranja - eliminar */
+  }
+  
+  .colorblind button[aria-label*="Ver"],
+  .colorblind button[aria-label*="ver"],
+  .colorblind button[aria-label*="View"],
+  .colorblind button:has(svg[class*="Eye"]) {
+    color: #009E73 !important; /* Verde azulado - revisar/ver */
+  }
+  
+  /* Asegurar que todos los gráficos usen colores Okabe-Ito en tema colorblind */
+  .colorblind .recharts-bar-rectangle,
+  .colorblind .recharts-bar {
+    fill: var(--chart-1) !important;
+  }
+  
+  .colorblind .recharts-line,
+  .colorblind .recharts-line-curve {
+    stroke: var(--chart-1) !important;
+  }
+  
+  /* Asegurar que los badges y estados usen colores Okabe-Ito */
+  .colorblind [data-slot="badge"][class*="success"],
+  .colorblind [class*="badge"][class*="success"] {
+    background-color: #009E73 !important; /* Verde azulado */
+    color: #FFFFFF !important;
+  }
+  
+  .colorblind [data-slot="badge"][class*="warning"],
+  .colorblind [class*="badge"][class*="warning"] {
+    background-color: #E69F00 !important; /* Amarillo oscuro */
+    color: #FFFFFF !important;
+  }
+  
+  .colorblind [data-slot="badge"][class*="error"],
+  .colorblind [class*="badge"][class*="error"],
+  .colorblind [data-slot="badge"][class*="danger"],
+  .colorblind [class*="badge"][class*="danger"] {
+    background-color: #D55E00 !important; /* Naranja */
+    color: #FFFFFF !important;
+  }
+  
+  .colorblind [data-slot="badge"][class*="info"],
+  .colorblind [class*="badge"][class*="info"] {
+    background-color: #56B4E9 !important; /* Azul claro */
+    color: #333333 !important;
+  }
+}
+
+@layer utilities {
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .animate-spin-slow {
+    animation: spin-slow 20s linear infinite;
+  }
+  
+  /* Prevenir parpadeo para accesibilidad (WCAG 2.3.2) */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  
+  /* Prevenir contenido que parpadee más de 3 veces por segundo (WCAG 2.3.1) */
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+  
+  /* Asegurar que las animaciones no parpadeen demasiado rápido */
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  /* Tooltips sin parpadeo */
+  [role="tooltip"],
+  [data-radix-tooltip-content],
+  [data-radix-popper-content-wrapper] {
+    animation: none !important;
+  }
+  
+  /* Checkboxes más visibles en el modal de ayudas */
+  .ayudas-modal [data-slot="checkbox"] {
+    @apply h-5 w-5 border-2;
+  }
+  
+  .ayudas-modal [data-slot="checkbox"]:not([data-state="checked"]) {
+    @apply border-foreground/60 bg-background;
+  }
+  
+  .ayudas-modal [data-slot="checkbox"][data-state="checked"] {
+    @apply border-primary bg-primary;
+  }
+  
+  .ayudas-modal [data-slot="checkbox-indicator"] svg {
+    @apply h-4 w-4;
+  }
+  
+  /* 1. Modo de alto contraste - Contraste mínimo 4.5:1 */
+  .high-contrast {
+    --background: #000000 !important;
+    --foreground: #FFFFFF !important;
+    --card: #000000 !important;
+    --card-foreground: #FFFFFF !important;
+    --primary: #FFFFFF !important;
+    --primary-foreground: #000000 !important;
+    --secondary: #1a1a1a !important;
+    --secondary-foreground: #FFFFFF !important;
+    --muted: #1a1a1a !important;
+    --muted-foreground: #FFFFFF !important;
+    --accent: #FFFFFF !important;
+    --accent-foreground: #000000 !important;
+    --destructive: #FF0000 !important;
+    --destructive-foreground: #FFFFFF !important;
+    --border: #FFFFFF !important;
+    --input: #000000 !important;
+    --ring: #FFFFFF !important;
+  }
+  
+  .high-contrast * {
+    border-color: #FFFFFF !important;
+  }
+  
+  .high-contrast button,
+  .high-contrast [role="button"] {
+    border: 2px solid #FFFFFF !important;
+  }
+  
+  /* 2. Ajuste de tamaño de letra */
+  .font-size-normal {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  .font-size-large {
+    font-size: 1.25rem;
+    line-height: 1.6;
+  }
+  
+  .font-size-large * {
+    font-size: 1.25rem !important;
+    line-height: 1.6 !important;
+  }
+  
+  .font-size-extra-large {
+    font-size: 1.5rem;
+    line-height: 1.7;
+  }
+  
+  .font-size-extra-large * {
+    font-size: 1.5rem !important;
+    line-height: 1.7 !important;
+  }
+  
+  /* 3. Zoom de pantalla - se maneja con CSS zoom property (ya aplicado en JS) */
+  
+  /* 4. Inversión de colores */
+  .color-invert {
+    filter: invert(1) hue-rotate(180deg);
+  }
+  
+  .color-invert img,
+  .color-invert video,
+  .color-invert canvas,
+  .color-invert svg {
+    filter: invert(1) hue-rotate(180deg);
+  }
+  
+  /* 5. Indicadores visuales para notificaciones */
+  .visual-indicators [role="alert"],
+  .visual-indicators .toast,
+  .visual-indicators [data-sonner-toast] {
+    animation: visual-blink 0.5s ease-in-out 2;
+    border: 3px solid currentColor;
+  }
+  
+  @keyframes visual-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+  
+  .visual-indicators .notification-badge {
+    animation: pulse-visual 1s ease-in-out 2;
+  }
+  
+  /* Espaciado de texto aumentado */
+  .text-spacing-increased * {
+    letter-spacing: 0.12em !important;
+    word-spacing: 0.16em !important;
+    line-height: 1.8 !important;
+  }
+
+  .text-spacing-extra-increased * {
+    letter-spacing: 0.2em !important;
+    word-spacing: 0.3em !important;
+    line-height: 2.2 !important;
+  }
+
+  /* Área de clic aumentada */
+  .increased-click-area button,
+  .increased-click-area a,
+  .increased-click-area [role="button"],
+  .increased-click-area input[type="button"],
+  .increased-click-area input[type="submit"],
+  .increased-click-area input[type="checkbox"],
+  .increased-click-area input[type="radio"] {
+    min-height: 44px !important;
+    min-width: 44px !important;
+    padding: 12px 24px !important;
+  }
+
+  .increased-click-area input[type="checkbox"],
+  .increased-click-area input[type="radio"] {
+    min-width: 24px !important;
+    min-height: 24px !important;
+    width: 24px !important;
+    height: 24px !important;
+  }
+
+  /* Modo monocromático */
+  .monochrome-mode * {
+    filter: grayscale(100%) !important;
+  }
+
+  /* Resaltado de enlaces */
+  .highlight-links a {
+    background-color: rgba(59, 130, 246, 0.2) !important;
+    border-bottom: 3px solid rgb(59, 130, 246) !important;
+    padding: 2px 4px !important;
+    border-radius: 3px !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+  }
+
+  .highlight-links a:hover,
+  .highlight-links a:focus {
+    background-color: rgba(59, 130, 246, 0.4) !important;
+    border-bottom-width: 4px !important;
+  }
+
+  /* Resaltado para guía paso a paso */
+  .step-guide-highlight {
+    outline: 4px solid rgb(59, 130, 246) !important;
+    outline-offset: 2px !important;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3), 0 0 20px rgba(59, 130, 246, 0.5) !important;
+    border-radius: 4px !important;
+    position: relative !important;
+    z-index: 10000 !important;
+    animation: step-guide-highlight-in 0.3s ease-out forwards !important;
+  }
+
+  @keyframes step-guide-highlight-in {
+    0% {
+      outline-width: 2px;
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2), 0 0 10px rgba(59, 130, 246, 0.3);
+    }
+    100% {
+      outline-width: 4px;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3), 0 0 20px rgba(59, 130, 246, 0.5);
+    }
+  }
+
+  @keyframes pulse-visual {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+  }
+  
+  /* 6. Puntero grande - se maneja dinámicamente en LargeCursor.tsx */
+  
+  /* 7. Simplificación de interfaz */
+  .simplified-ui * {
+    border-radius: 0 !important;
+  }
+  
+  .simplified-ui [class*="rounded"],
+  .simplified-ui [class*="rounded-lg"],
+  .simplified-ui [class*="rounded-xl"] {
+    border-radius: 0 !important;
+  }
+  
+  .simplified-ui button,
+  .simplified-ui [role="button"] {
+    border: 2px solid currentColor !important;
+    padding: 0.75rem 1.5rem !important;
+  }
+  
+  /* Lupa cursor - optimizaciones de rendimiento */
+  .magnifier-inner {
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    pointer-events: none !important;
+  }
+  
+  /* Usar un pseudo-elemento para reflejar el contenido */
+  .magnifier-inner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    background-attachment: fixed;
+  }
+}
